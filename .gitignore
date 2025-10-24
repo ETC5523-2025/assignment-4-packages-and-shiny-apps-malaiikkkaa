@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+nitrateApp/data-raw/cache
+.Renviron
