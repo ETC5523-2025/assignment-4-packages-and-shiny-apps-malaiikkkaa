@@ -3,7 +3,7 @@ Title: Explore Nitrate Concentrations for three NEON sites (June 2019 - July 201
 Version: 0.0.0.9000
 Authors@R: 
     person("Malaika", "Fernandes", , "mfer0073@student.monash.edu", role = c("Author", "Maintainer"))
-Description: What the package does (one paragraph).
+Description: `nitrateApp` is a package that can be used to explore **daily nitrate concentrations** for three NEON river sites from June 2019 to July 2019. This package can be used as an exploratory tool to access the cleaned dataset of nitrate concentrations, and a *Shiny* app to visutalise patterns over time and location. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
