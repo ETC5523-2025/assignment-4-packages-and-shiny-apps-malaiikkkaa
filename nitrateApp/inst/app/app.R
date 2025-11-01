@@ -1,6 +1,7 @@
 # Loading the packages
 library(shiny)
 library(ggplot2)
+library(shinythemes)
 
 # Loading the data from the package
 data("nitrates_small", package = utils::packageName())
@@ -13,10 +14,12 @@ site_map <- c(
 )
 
 # UI
-ui <- fluidPage( # opening fluidpage
+ui <- fluidPage(
+  theme = shinytheme("flatly"),
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")),
   titlePanel("Exploring Nitrate Concentrations by Site (June and July 2019)"),
-  sidebarLayout( # opening sidebar layout
-    sidebarPanel( # opening sidebar panel
+  sidebarLayout(
+    sidebarPanel(
     checkboxGroupInput(
       inputId = "site",
       label = "Select site(s)",
@@ -83,7 +86,7 @@ server <- function(input, output) {
 
     ggplot(df,
            aes(x = date, y = nitrate_mgL, color = site)) +
-              geom_line()+
+              geom_line(width = 3)+
               geom_point() +
       labs(title = paste("Nitrate Concentrations at", input$site),
            x = "Date",
