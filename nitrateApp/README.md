@@ -28,9 +28,11 @@ remotes::install("ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa/
 
 ### Dataset
 
-The package contains a clean dataset `nitrates_small`. Key variables: -
-`site`: NEON site code - `date`: Date (Range: June 2019 - July 2019) -
-`nitrate_mgL`: Nitrate concentrations (mg/L)
+The package contains a clean dataset `nitrates_small`. Key variables:
+
+- `site`: NEON site code
+- `date`: Date (Range: June 2019 - July 2019)
+- `nitrate_mgL`: Nitrate concentrations (mg/L)
 
 ### Shiny app
 
