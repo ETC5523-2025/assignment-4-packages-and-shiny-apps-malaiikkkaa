@@ -8,9 +8,9 @@ data("nitrates_small", package = utils::packageName())
 
 # Mapping site codes
 site_map <- c(
-  "ARIK" = "Arikaree River",
-  "CARI" = "Caribou Creek",
-  "LEWI" = "Lewis Run"
+  "ARIK" = "Arikaree River (ARIK)",
+  "CARI" = "Caribou Creek (CARI)",
+  "LEWI" = "Lewis Run (LEWI)"
 )
 
 # UI
@@ -86,7 +86,7 @@ server <- function(input, output) {
 
     ggplot(df,
            aes(x = date, y = nitrate_mgL, color = site)) +
-              geom_line(width = 3)+
+              geom_line()+
               geom_point() +
       labs(title = paste("Nitrate Concentrations at", input$site),
            x = "Date",
