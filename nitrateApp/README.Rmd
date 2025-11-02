@@ -47,7 +47,10 @@ Use the interactive app to explore nitrate concentrations over specified dates a
 
 To launch the app:
 ```{r}
+# First load the app
 library(nitrateApp)
-#add launch button
+
+# Then run the app
+nitrateApp::run_nitrate_app()
 ```
 
