@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>nitrateApp</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">nitrateApp</h1>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>Rising river nitrate concentrations are becoming increasingly
+threatening to aquatic ecosystems. The nitrateApp package provides a
+clean dataset and interactive app to explore and visualise nitrate
+concentrations for three NEON sites between June - July 2019. This
+vignette demonstrates how to:</p>
+<ul>
+<li>Load and inspect the dataset</li>
+<li>Use simple functions to explore the data</li>
+<li>Run the interactive Shiny app</li>
+</ul>
+</div>
+<div id="loading-the-package-and-data" class="section level2">
+<h2>Loading the package and data</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(nitrateApp)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;nitrates_small&quot;</span>, <span class="at">package =</span> <span class="st">&quot;nitrateApp&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">str</span>(nitrates_small)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt; Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    183 obs. of  3 variables:</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;  $ site       : chr  &quot;ARIK&quot; &quot;ARIK&quot; &quot;ARIK&quot; &quot;ARIK&quot; ...</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt;  $ date       : Date, format: &quot;2019-06-01&quot; &quot;2019-06-02&quot; ...</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt;  $ nitrate_mgL: num  5.3 5.2 5.15 5.32 5.13 ...</span></span></code></pre></div>
+<p>The <code>nitrates_small</code> dataset is a small version of nitrate
+concentration datasets available from NEON. These sites differ in
+nitrate concentrations due to their individual geographic and aquatic
+characteristics. These differences and other patterns can be further
+explored using the <code>nitrates_small</code> dataset.</p>
+</div>
+<div id="helper-examples-to-explore-the-dataset" class="section level2">
+<h2>Helper examples to explore the dataset</h2>
+<p>Calculating some summary statistics</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>nitrates_small <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  <span class="fu">group_by</span>(site)<span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    <span class="at">mean_mgL =</span> <span class="fu">mean</span>(nitrate_mgL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>    <span class="at">min_mgL =</span> <span class="fu">min</span>(nitrate_mgL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>    <span class="at">max_mgL =</span> <span class="fu">max</span>(nitrate_mgL, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  )</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co">#&gt;   site  mean_mgL min_mgL max_mgL</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="co">#&gt; 1 ARIK      4.39    1.05    8.88</span></span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a><span class="co">#&gt; 2 CARI     23.9    20.5    29.3 </span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a><span class="co">#&gt; 3 LEWI    197.    132.    211.</span></span></code></pre></div>
+</div>
+<div id="visualising-the-data" class="section level2">
+<h2>Visualising the data</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="fu">ggplot</span>(nitrates_small, <span class="fu">aes</span>(date, nitrate_mgL, <span class="at">color =</span> site)) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Nitrate (mg/L)&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Daily nitrate concentrations by site&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="figure">
+<img src="data:image/png;base64,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" alt="Line chart showing daily nitrate concentrations for ARIK, CARI, LEWI over June–July 2019." />
+<p class="caption">
+Daily nitrate by site (June–July 2019)
+</p>
+</div>
+</div>
+<div id="launch-the-interactive-app" class="section level2">
+<h2>Launch the interactive app</h2>
+<p>To explore the data interactively run:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>nitrateApp<span class="sc">::</span><span class="fu">run_nitrate_app</span>()</span></code></pre></div>
+<p>With the app you can:</p>
+<ul>
+<li>Select one or more site(s)</li>
+<li>Select a date range</li>
+<li>View an updating time series for the selected date range and
+location</li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
