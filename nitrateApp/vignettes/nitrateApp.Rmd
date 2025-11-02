@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 Rising river nitrate concentrations are becoming increasingly threatening to aquatic ecosystems. The nitrateApp package provides a clean dataset and interactive app to explore and visualise nitrate concentrations for three NEON sites between June - July 2019. This vignette demonstrates how to:
+
 - Load and inspect the dataset
 - Use simple functions to explore the data
 - Run the interactive Shiny app
@@ -34,7 +35,7 @@ These differences and other patterns can be further explored using the `nitrates
 ## Helper examples to explore the dataset
 
 Calculating some summary statistics
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 
 nitrates_small |>
@@ -47,7 +48,7 @@ nitrates_small |>
 ```
 
 ## Visualising the data
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(ggplot2)
 
 ggplot(nitrates_small, aes(date, nitrate_mgL, color = site)) +
@@ -65,6 +66,7 @@ nitrateApp::run_nitrate_app()
 ```
 
 With the app you can: 
+
 - Select one or more site(s)
 - Select a date range
 - View an updating time series for the selected date range and location
