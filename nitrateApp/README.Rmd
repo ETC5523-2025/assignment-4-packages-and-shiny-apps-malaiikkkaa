@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ## Installing `nitrateApp`
 
 To install the package directly from GitHub, run the following:
-``` {r}
+``` {r, eval = FALSE}
 # Install remotes if required
 install.packages("remotes")
 
@@ -46,7 +46,7 @@ Key variables:
 Use the interactive app to explore nitrate concentrations over specified dates and regions. 
 
 To launch the app:
-```{r}
+```{r, eval=FALSE}
 # First load the app
 library(nitrateApp)
 
