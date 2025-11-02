@@ -1,6 +1,5 @@
 .Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-nitrateApp/data-raw/cache
-.Renviron
+inst/doc
+/doc/
+/Meta/
+docs
