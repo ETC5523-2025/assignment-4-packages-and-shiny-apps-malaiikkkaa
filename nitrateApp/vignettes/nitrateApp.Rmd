@@ -48,7 +48,8 @@ nitrates_small |>
 ```
 
 ## Visualising the data
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, fig.cap="Daily nitrate by site (June–July 2019)", fig.alt="Line chart showing daily nitrate concentrations for ARIK, CARI, LEWI over June–July 2019."}
+
 library(ggplot2)
 
 ggplot(nitrates_small, aes(date, nitrate_mgL, color = site)) +

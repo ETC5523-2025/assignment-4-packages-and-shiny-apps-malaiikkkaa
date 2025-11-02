@@ -1,9 +1,25 @@
-url: ~
+url: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-malaiikkkaa/
 template:
   bootstrap: 5
-  copy_button: true
+  bootswatch: flatly
+navbar:
+  structure:
+    left:  [reference, articles]
+    right: [github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-malaiikkkaa/
 
-home:
-  title: nitrateApp
-  description:
+reference:
+  - title: "Launch"
+    contents:
+      - run_nitrate_app
+  - title: "Data"
+    contents:
+      - nitrates_small
 
+articles:
+  - title: "Vignettes"
+    contents:
+      - nitrateApp
