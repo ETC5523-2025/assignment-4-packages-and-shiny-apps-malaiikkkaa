@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person("Malaika", "Fernandes", role = c("aut", "cre"),
               email = "mfer0073@student.monash.edu"))
-Description: Tools and a Shiny app to explore daily nitrate concentrations
+Description: This pac Shiny app to explore daily nitrate concentrations
     for three NEON river sites between June and July 2019. Includes access to
     a cleaned example dataset and simple visualisations for temporal and
     site-based patterns.
@@ -21,3 +21,12 @@ VignetteBuilder: knitr
 URL: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa,
     https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-malaiikkkaa/
 BugReports: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa/issues
+Imports:
+    shiny,
+    ggplot2,
+    dplyr,
+    lubridate
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
