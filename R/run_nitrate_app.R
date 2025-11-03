@@ -1,13 +1,17 @@
-#'Launch the nitrateApp Shiny application
+#' Launch the nitrateApp Shiny application
 #'
-#'Opening the nitrate concentration app contained in this package to explore daily nitrate concentrations by site and date.
+#' Opens the interactive app bundled with this package to explore daily
+#' nitrate concentrations by site and date.
 #'
-#'@return Returns the result of \code{shiny::runApp()}
-#'@export
-#'@examples
-#' if (interactive()) {
+#' @return Invisibly returns the result of \code{shiny::runApp()}.
+#'
+#' @examples
+#' \dontrun{
 #'   nitrateApp::run_nitrate_app()
 #' }
+#'
+#' @export
+#' @importFrom shiny runApp
 run_nitrate_app <- function() {
   app_dir <- system.file("app", package = "nitrateApp")
   if (app_dir == "" || !dir.exists(app_dir)) {

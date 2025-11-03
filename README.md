@@ -6,7 +6,7 @@
 `nitrateApp` is a package that can be used to explore **daily nitrate
 concentrations** for three NEON river sites from June 2019 to July 2019.
 This package can be used as an exploratory tool to access the cleaned
-dataset of nitrate concentrations, and a *Shiny* app to visutalise
+dataset of nitrate concentrations, and a *Shiny* app to visualise
 patterns over time and location.
 
 **Website:** [View the nitrateApp pkgdown
@@ -24,7 +24,7 @@ To install the package directly from GitHub, run the following:
 install.packages("remotes")
 
 # Then install the nitrateApp
-remotes::install("ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa/nitrateApp")
+remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa")
 ```
 
 ## Package contents

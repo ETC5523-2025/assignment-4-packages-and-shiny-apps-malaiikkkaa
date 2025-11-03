@@ -2,10 +2,20 @@
 % Please edit documentation in R/run_nitrate_app.R
 \name{run_nitrate_app}
 \alias{run_nitrate_app}
-\title{Running the Shiny app}
+\title{Launch the nitrateApp Shiny application}
 \usage{
 run_nitrate_app()
 }
+\value{
+Invisibly returns the result of \code{shiny::runApp()}.
+}
 \description{
-Opening the nitrate concentration app
+Opens the interactive app bundled with this package to explore daily
+nitrate concentrations by site and date.
+}
+\examples{
+\dontrun{
+  nitrateApp::run_nitrate_app()
+}
+
 }
