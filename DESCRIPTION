@@ -17,7 +17,6 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
 URL: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa,
     https://etc5523-2025.github.io/assignment-4-packages-and-shiny-apps-malaiikkkaa/
 BugReports: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-malaiikkkaa/issues
@@ -26,7 +25,4 @@ Imports:
     ggplot2,
     dplyr,
     lubridate
-Suggests:
-    knitr,
-    rmarkdown
 VignetteBuilder: knitr
