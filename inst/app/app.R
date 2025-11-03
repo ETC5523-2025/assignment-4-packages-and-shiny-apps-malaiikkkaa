@@ -4,7 +4,7 @@ library(ggplot2)
 library(shinythemes)
 
 # Loading the data from the package
-data("nitrates_small", package = utils::packageName())
+data("nitrates_small", package = "nitrateApp")
 
 # Mapping site codes
 site_map <- c(
